@@ -1,36 +1,28 @@
 #include "Controller.h"
 
-
-void Controller::openWindow()
-{
-	sf::RenderWindow window(sf::VideoMode(700, 700),
-		"Tetris");
-
-	
-	while (window.isOpen())
-	{		
-		sf::Event event;
-		
-		while (window.pollEvent(event))
-		{
-			
-		}
-
-		window.clear(sf::Color::Blue);
-		auto image = ImagesLibrary::getInstance().getImage("Splash");
-		window.draw(*image);
-		window.display();
-
-	}
-
-}
-
-void Controller::openMenuWindow()
-{
-}
-
 Controller::Controller()
 {
+}
+
+void Controller::handleTimePassed()
+{
+	if (!m_timer.m_on)
+		return;
+
+	auto state = m_game.getState();
+	switch (state)
+	{
+	case Menu:
+		/*if (m_timer.m_clock.getElapsedTime().asSeconds() > BACKGROUND_DISPLAY_SECONDS)
+		{
+			//TODO: show start game button
+			m_timer.m_on = false;
+		}*/
+		break;
+	default:
+		break;
+	}
+	
 }
 
 
@@ -42,7 +34,24 @@ Controller & Controller::getInstance()
 
 void Controller::run()
 {
-	openWindow();
+	//Screen::getInstance().updateScreen();
+	while (Screen::getInstance().getWindow().isOpen())
+	{
+		sf::Event event;
+		while (Screen::getInstance().getWindow().pollEvent(event))
+		{
+
+		}
+
+		handleTimePassed();
+	}
+}
+
+void Controller::setTimerFor(int seconds)
+{
+	m_timer.m_on = true;
+	m_timer.m_seconds = seconds;
+	m_timer.m_clock.restart();
 }
 
 Controller::~Controller()

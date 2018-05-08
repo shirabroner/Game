@@ -7,18 +7,21 @@
 using std::shared_ptr;
 typedef shared_ptr<sf::RectangleShape> ImageType;
 
-class ImagesLibrary
+class ResourcesLibrary
 {
 public:
-	~ImagesLibrary();
-	static ImagesLibrary& getInstance();
+	~ResourcesLibrary();
+	static ResourcesLibrary& getInstance();
 	ImageType getImage(std::string imageName);
+	double getValue(std::string valueName);
 
 private:
 	std::unordered_map<std::string, ImageType> m_images;
+	std::unordered_map<std::string, double> m_values;
 	void resetImages();
+	void resetValues();
 	void addImage(std::string imageName);
-	ImagesLibrary();
-	ImagesLibrary(const ImagesLibrary&) {}
+	ResourcesLibrary();
+	ResourcesLibrary(const ResourcesLibrary&) {}
 };
 

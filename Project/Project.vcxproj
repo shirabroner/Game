@@ -136,13 +136,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="ImagesLibrary.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="ResourcesLibrary.cpp" />
+    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="ShapeDrawable.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Controller.h" />
-    <ClInclude Include="ImagesLibrary.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="ResourcesLibrary.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="ShapeDrawable.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
